@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Position</title>
+
+    <script>
+
+        function getPosition()
+        {
+            if(navigator.geolocation)
+            {
+                navigator.geolocation.getCurrentPosition(successPosition);
+            }else {
+                document.getElementById("result").innerHTML = "Your Browser does not suppot geo location!";
+            }
+        }
+
+        function successPosition(position)
+        {
+
+            var lat = position.coords.latitude;
+
+            var long = position.coords.longitude;
+
+            document.getElementById("result").innerHTML = "Latitude: " + lat +"<br />Longitude: " + long;
+
+            alert("Altitude: " + position.coords.altitude);
+
+            alert("Accuracy: " + position.coords.accuracy);
+
+            alert("Altitude Accuracy: " + position.coords.altitudeAccuracy);
+
+            alert("Direction: " + position.coords.heading);
+
+            alert("Speed: " + position.coords.speed);
+
+            alert("Time: " + position.timestamp);
+
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <button id="btnPosition" onclick="getPosition();">Get Current Position</button><br>
+    <div id="result"></div>
+
+</body>
+</html>
